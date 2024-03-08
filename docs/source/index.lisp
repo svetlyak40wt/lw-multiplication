@@ -1,5 +1,6 @@
 (defpackage #:multiplication-docs/index
   (:use #:cl)
+  (:import-from :docs-builder/builder)
   (:import-from #:40ants-doc
                 #:defsection-copy
                 #:section
