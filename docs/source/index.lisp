@@ -1,12 +1,12 @@
-(defpackage #:docs/index
-  (:nicknames #:docs)
+(defpackage #:multiplication-docs/index
   (:use #:cl)
-  (:import-from #:mgl-pax
+  (:import-from #:40ants-doc
+                #:defsection-copy
                 #:section
                 #:defsection)
-  (:export
-   #:build-docs))
-(in-package docs/index)
+  (:export #:@index
+           #:@readme))
+(in-package #:multiplication-docs/index)
 
 
 (defsection @index (:title "Multiplication Game!")
@@ -25,19 +25,14 @@ Main Features:
 ")
 
 
-(defun build-docs ()
-  (mgl-pax:update-asdf-system-readmes @index :docs)
-  
-  (mgl-pax:update-asdf-system-html-docs
-   @index :docs
-   :target-dir "docs/build/"
-   :pages `((:objects (,docs:@index)
-             :source-uri-fn ,(pax:make-github-source-uri-fn
-                              :docs
-                              "https://github.com/40ants/multiplication"))))
+(defsection-copy @readme @index)
 
-  (uiop:run-program "rm -fr docs/build/static")
-  ;; We keep static in the root folder to make images accessable
-  ;; from the README
-  (uiop:run-program "cp -R static docs/build/static")
-  (values))
+
+(defmethod docs-config ((system (eql (asdf:find-system "multiplication-docs"))))
+  ;; 40ANTS-DOC-THEME-40ANTS system will bring
+  ;; as dependency a full 40ANTS-DOC but we don't want
+  ;; unnecessary dependencies here:
+  (uiop:symbol-call :ql :quickload :40ants-doc-theme-40ants)
+  (list :theme
+        (find-symbol "40ANTS-THEME"
+                     (find-package "40ANTS-DOC-THEME-40ANTS"))))
