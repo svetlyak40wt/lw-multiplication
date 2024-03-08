@@ -4,6 +4,8 @@
                 #:defsection-copy
                 #:section
                 #:defsection)
+  (:import-from #:docs-config
+                #:docs-config)
   (:export #:@index
            #:@readme))
 (in-package #:multiplication-docs/index)
