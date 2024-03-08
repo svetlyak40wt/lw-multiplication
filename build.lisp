@@ -17,6 +17,7 @@
   (declare (ignore pathname buffer length))
   (system:merge-ef-specs ef-spec :utf-8))
 
+;; Not sure why I've decided to add this line
 (set-default-character-element-type 'character)
 
 (setf stream::*default-external-format* '(:utf-8 :eol-style :lf))
