@@ -6,6 +6,7 @@
         "master"
       ]
     },
+    "pull_request": null,
     "schedule": [
       {
         "cron": "0 10 * * 1"
