@@ -11,9 +11,7 @@ In a playful way, it helps to learn the multiplication table.
 Main Features:
 
 * shows hints to make learning easier;
-
 * goes from simple examples to complex ones;
-
 * shows seals!
 
 
