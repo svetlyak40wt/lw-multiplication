@@ -38,3 +38,21 @@ Main Features:
   (list :theme
         (find-symbol "40ANTS-THEME"
                      (find-package "40ANTS-DOC-THEME-40ANTS"))))
+
+
+
+(defmethod docs-builder/builder:build :around ((builder t) (system (eql (asdf:registered-system "multiplication-docs")))
+                                               &rest rest
+                                               &key local root-sections)
+  (declare (ignore rest local root-sections))
+  (let* ((target-dir (call-next-method))
+         (static-dir (namestring
+                      (merge-pathnames (make-pathname :directory '(:relative "static"))
+                                       target-dir))))
+
+    (uiop:run-program (format nil "rm -fr ~A"
+                              static-dir))
+    ;; We keep static in the root folder to make images accessable
+    ;; from the README
+    (uiop:run-program (format nil "cp -R static ~A"
+                              static-dir))))
