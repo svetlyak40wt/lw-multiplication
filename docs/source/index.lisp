@@ -56,4 +56,6 @@ Main Features:
     ;; We keep static in the root folder to make images accessable
     ;; from the README
     (uiop:run-program (format nil "cp -R static ~A"
-                              static-dir))))
+                              static-dir))
+
+    (values target-dir)))
