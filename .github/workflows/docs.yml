@@ -39,8 +39,7 @@
           "uses": "40ants/build-docs@v1",
           "with": {
             "asdf-system": "multiplication-docs",
-            "error-on-warnings": true,
-            "ngrok-auth-token": "${{ secrets.NGROK_AUTH_TOKEN }}"
+            "error-on-warnings": true
           }
         }
       ]
