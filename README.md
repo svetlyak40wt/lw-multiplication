@@ -4,7 +4,7 @@
 
 Helps your child learn the multiplication table and improve their math skills.
 
-<img src="/static/demo.gif" width="70%"/>
+<img src="static/demo.gif" width="70%"/>
 
 In a playful way, it helps to learn the multiplication table.
 
